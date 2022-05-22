@@ -11,6 +11,8 @@ use pocketmine\event\server\CommandEvent;
 
 class Main extends PluginBase implements Listener {
 
+	protected Config $config;
+
 	private function generatorPassword(): string {
 		$password = substr(base64_encode(random_bytes(20)), 3, 8);
 		return $password;
