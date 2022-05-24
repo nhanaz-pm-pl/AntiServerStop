@@ -29,7 +29,8 @@ class Main extends PluginBase implements Listener {
 	}
 
 	public function onCommandEvent(CommandEvent $event) {
-		$args = explode(" ", $event->getCommand());
+		$command = $event->getCommand();
+		$args = explode(" ", $command);
 		$sender = $event->getSender();
 		$stopCmd = "stop";
 		if (in_array($args[0], ["{$stopCmd}", "/{$stopCmd}", "./{$stopCmd}", "./pocketmine:{$stopCmd}"])) {
