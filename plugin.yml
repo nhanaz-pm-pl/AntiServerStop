@@ -7,4 +7,14 @@ author: NhanAZ
 website: https://github.com/NhanAZ
 src-namespace-prefix: NhanAZ\AntiServerStop
 description: "The operator won't be able to stop your server if they don't have the password!"
+
+commands:
+  stop:
+    description: "Stops the server"
+    usage: "/stop <password>"
+    permission: antiserverstop.command
+permissions:
+  antiserverstop.command:
+    description: "Allows the user to stop the server"
+    default: op
 ...
