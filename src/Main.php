@@ -18,8 +18,13 @@ class Main extends PluginBase implements Listener {
 
 	protected Config $config;
 
-	private function generatorPassword(): string {
-		$password = substr(base64_encode(random_bytes(20)), 3, 8);
+	private function generatorPassword($length = 16, $characters = "*&^%$#@!0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"): string {
+		/** Thanks onlinephp.io */
+		$password = "";
+		$max = mb_strlen($characters, "8bit") - 1;
+		for ($i = 0; $i < $length; ++$i) {
+			$password .= $characters[random_int(0, $max)];
+		}
 		return $password;
 	}
 
