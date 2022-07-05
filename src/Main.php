@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace NhanAZ\AntiServerStop;
 
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
-use pocketmine\event\Listener;
-use pocketmine\lang\KnownTranslationFactory;
-use pocketmine\permission\DefaultPermissionNames;
-/* use pocketmine\permission\PermissionManager; */
-use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use function base64_encode;
-use function random_bytes;
-use function substr;
+use pocketmine\event\Listener;
+use pocketmine\command\Command;
+use pocketmine\plugin\PluginBase;
+use pocketmine\command\CommandSender;
+use pocketmine\lang\KnownTranslationFactory;
+/* use pocketmine\permission\PermissionManager; */
+/* use pocketmine\permission\DefaultPermissionNames; */
+
 
 class Main extends PluginBase implements Listener {
+
 	protected Config $config;
 
 	private function generatorPassword(): string {
@@ -36,13 +35,15 @@ class Main extends PluginBase implements Listener {
 		$this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, ["password" => $this->generatorPassword(), "wrongPassword" => "Wrong password!"]);
 		$command = $this->getServer()->getCommandMap()->getCommand("stop");
 		$command->setDescription(KnownTranslationFactory::pocketmine_command_stop_description());
-		/* $permission = PermissionManager::getInstance()->getPermission($command->getPermission()); */
-		/* $permission->setDescription(?); */
+		/**
+		 * $permission = PermissionManager::getInstance()->getPermission($command->getPermission());
+		 * $permission->setDescription(?);
+		 * */
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $commandLabel, array $args): bool {
 		if ($command->getName() === "stop") {
-			/* DefaultPermissionNames::COMMAND_STOP */
+			/** DefaultPermissionNames::COMMAND_STOP */
 			if (!isset($args[0])) {
 				return false;
 			}
