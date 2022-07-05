@@ -32,7 +32,10 @@ class Main extends PluginBase implements Listener {
 	protected function onEnable(): void {
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
-		$this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, ["password" => $this->generatorPassword(), "wrongPassword" => "Wrong password!"]);
+		$this->config = new Config($this->getDataFolder() . "config.yml", Config::YAML, [
+			"password" => $this->generatorPassword(),
+			"wrongPassword" => "Wrong password!"
+		]);
 		$command = $this->getServer()->getCommandMap()->getCommand("stop");
 		$command->setDescription(KnownTranslationFactory::pocketmine_command_stop_description());
 		/**
