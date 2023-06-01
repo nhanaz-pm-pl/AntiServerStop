@@ -1,6 +1,6 @@
 ---
 name: AntiServerStop
-version: 1.0.2+dev
+version: 1.0.2
 main: NhanAZ\AntiServerStop\Main
 api: 5.0.0
 author: NhanAZ
